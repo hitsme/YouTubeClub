@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">YouTubeClub</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">YouTubeClub</string>
+    <string name="nav_header_subtitle">Deeonliang5203@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="large_text">
+        "这是一个可以看YouTube的应用，\n视频会在每天午间12点自行爬取油管视频更新。\n因为目前经济比较拮据，服务器维护成本较大，服务端只有20G空间\n，带宽G口共享，所以当服务监测存储\n不够时会随机抽取历史视频资源删除，\n如果视频看不了，应该是被删除了\n
+        。\n\n如果你是个土豪，请领养我们！这样我们就要足够存储空间，及更高速的带宽\n\n"
+
+    </string>
+</resources>

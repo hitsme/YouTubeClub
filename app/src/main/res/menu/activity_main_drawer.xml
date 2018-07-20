@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="首页" />
+        <item
+            android:id="@+id/nav_newactive"
+            android:icon="@drawable/ic_fiber_new_black_24dp"
+            android:title="最新动态" />
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_search_black_24dp"
+            android:title="搜索帖子" />
+        <item
+            android:id="@+id/nav_write"
+            android:icon="@drawable/ic_palette_black_24dp"
+            android:title="写帖子" />
+        <item
+            android:id="@+id/nav_aichat"
+            android:icon="@drawable/ic_chat_black_24dp"
+            android:title="AIChat" />
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="登录" />
+
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_thumb_up_black_24dp"
+                android:title="评价" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_menu_send"
+                android:title="关于" />
+        </menu>
+    </item>
+
+</menu>
