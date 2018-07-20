@@ -128,7 +128,13 @@ public class WebVideoActivity extends AppCompatActivity implements NavigationVie
             bundleV.putString("url", "http://www.22kb.club/search.php?mod=forum&mobile=2");
             intentV.putExtras(bundleV);
             startActivity(intentV);
-        } else if (id == R.id.nav_login) {
+        }  else if (id == R.id.nav_write) {
+            final Intent intentV = new Intent(this, WebVideoActivity.class);
+            final Bundle bundleV = new Bundle();
+            bundleV.putString("url", "http://www.22kb.club/forum.php?forumlist=1&do=t9_post&mobile=2");
+            intentV.putExtras(bundleV);
+            startActivity(intentV);
+        }else if (id == R.id.nav_login) {
             final Intent intentV=new Intent(this,WebVideoActivity.class);
             final Bundle bundleV=new Bundle();
             bundleV.putString("url","http://www.22kb.club/member.php?mod=logging&action=login&mobile=2");
@@ -138,6 +144,9 @@ public class WebVideoActivity extends AppCompatActivity implements NavigationVie
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + "com.hitsme.youtubeclub.app")));
         } else if (id == R.id.nav_about) {
             final Intent intentV=new Intent(this,AboutActivity.class);
+            startActivity(intentV);
+        }else if (id == R.id.nav_aichat) {
+            final Intent intentV=new Intent(this, com.hitsme.robot.chat.MainActivity.class);
             startActivity(intentV);
         }
 
