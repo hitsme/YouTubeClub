@@ -1,9 +1,12 @@
 package com.hitsme.youtubeclub;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,13 +47,17 @@ public class MainActivity extends AppCompatActivity
     private WebChromeClient.CustomViewCallback customViewCallback;
     private Intent intentVideo;
     private View mErrorView;
+    private ProgressDialog dialog;
+    @SuppressLint("WrongViewCast")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        webView = (WebView) findViewById(R.id.webView);
+        webView =  findViewById(R.id.webView);
         setupTransition();
+        dialog = ProgressDialog.show(MainActivity.this, "玩命加载中，请稍后...", null);
+
         initWebView();
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -199,6 +206,20 @@ public class MainActivity extends AppCompatActivity
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 showErrorPage();//显示错误页面
             };
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+               // Toast.makeText(MainActivity.this,"加载完毕",Toast.LENGTH_SHORT).show();
+                webView.setVisibility(View.VISIBLE);
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog.show();
+               // Toast.makeText(MainActivity.this,"开始加载",Toast.LENGTH_SHORT).show();
+            }
         };
         webView.setWebViewClient(wvc);
 
@@ -228,6 +249,12 @@ public class MainActivity extends AppCompatActivity
 
         // 加载Web地址
         webView.loadUrl("http://www.22kb.club/");
+        webView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"触发点击",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /** 视频播放全屏 **/

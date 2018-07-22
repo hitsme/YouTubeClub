@@ -1,9 +1,11 @@
 package com.hitsme.youtubeclub;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,6 +43,7 @@ public class WebVideoActivity extends AppCompatActivity implements NavigationVie
     private WebChromeClient.CustomViewCallback customViewCallback;
     private View mErrorView;
     private String urlYun="";
+    private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -48,6 +51,7 @@ public class WebVideoActivity extends AppCompatActivity implements NavigationVie
         webView = (WebView) findViewById(R.id.webView);
         Bundle bundleUrl=this.getIntent().getExtras();
         urlYun=bundleUrl.getString("url");
+        dialog = ProgressDialog.show(WebVideoActivity.this, "正在加载中，请稍后...", null);
         initWebView();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -176,6 +180,20 @@ public class WebVideoActivity extends AppCompatActivity implements NavigationVie
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 showErrorPage();//显示错误页面
             };
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                // Toast.makeText(MainActivity.this,"加载完毕",Toast.LENGTH_SHORT).show();
+                webView.setVisibility(View.VISIBLE);
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                dialog.show();
+                // Toast.makeText(MainActivity.this,"开始加载",Toast.LENGTH_SHORT).show();
+            }
         };
         webView.setWebViewClient(wvc);
 
