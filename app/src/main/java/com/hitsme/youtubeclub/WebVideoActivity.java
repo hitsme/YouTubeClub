@@ -51,7 +51,7 @@ public class WebVideoActivity extends AppCompatActivity implements NavigationVie
         webView = (WebView) findViewById(R.id.webView);
         Bundle bundleUrl=this.getIntent().getExtras();
         urlYun=bundleUrl.getString("url");
-        dialog = ProgressDialog.show(WebVideoActivity.this, "正在加载中，请稍后...", null);
+        dialog = ProgressDialog.show(WebVideoActivity.this, "玩命加载中，请稍后...", null);
         initWebView();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
